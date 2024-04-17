@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'background': "#050027",
+        'inactive': "#4D4D4D",
+        'accent': "#53C1FF",
+        'text': "#EBEDF0",
+        'text-light': "#A8A8A8",
+      },
+      fontFamily: {
+        'sans': "Lato",
+        'mono': "Space Mono",
+      }
+    },
   },
   plugins: [],
 }
