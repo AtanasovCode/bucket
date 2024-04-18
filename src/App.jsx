@@ -1,5 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //routes
