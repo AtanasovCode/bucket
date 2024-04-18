@@ -10,21 +10,21 @@ const Dashboard = ({
 
     return (
         <div className="
-            min-h-[100vh] bg-background w-full py-12 px-4
+            min-h-[100vh] bg-background w-full py-12
             flex flex-col items-center justify-start
         ">
             <div>
                 <img 
                     src={logo}
                     alt="logo"
-                    className="w-8 mb-16"
+                    className="w-8 mb-16 md:w-10 lg:w-12"
                 />
             </div>
-            <div className="w-full flex items-center justify-center text-light text-xl mb-16">
+            <div className="w-full flex items-center justify-center text-light text-md mb-16 md:text-lg lg:text-lg">
                 Buckets
             </div>
             <div className={`
-                flex flex-col ${bucketStyle} min-h-[50vh] w-[90%]
+                flex flex-col ${bucketStyle} min-h-[50vh] w-full md:w-[80%] lg:w-[50%]
             `}>
                 {
                     buckets.length ?
