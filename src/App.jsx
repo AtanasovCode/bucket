@@ -3,12 +3,17 @@ import { buckets } from "./data/Data";
 
 //routes
 import Dashboard from "./routes/Dashboard";
+import Add from "./routes/Add"; //add a new bucket
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Dashboard buckets={buckets} />
+    },
+    {
+      path: "/add-new-bucket",
+      element: <Add buckets={buckets} />
     },
   ])
 

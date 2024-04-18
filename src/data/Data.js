@@ -4,7 +4,7 @@ const buckets = [
     {
         name: "Light Bee X",
         goal: 4500,
-        saved: 4720,
+        saved: 2742.26,
         payments: {
             "12/4/2023": 125,
             "26/4/2023": 442,

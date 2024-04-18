@@ -1,5 +1,9 @@
-import logo from '../assets/logo.svg';
+import { Link } from 'react-router-dom';
 import Bucket from '../components/Bucket';
+
+//importing assets
+import logo from '../assets/logo.svg';
+import add from '../assets/add-icon.svg';
 
 const Dashboard = ({
     buckets,
@@ -10,11 +14,11 @@ const Dashboard = ({
 
     return (
         <div className="
-            min-h-[100vh] bg-background w-full py-12
+            min-h-[100vh] bg-background w-full py-12 relative
             flex flex-col items-center justify-start
         ">
             <div>
-                <img 
+                <img
                     src={logo}
                     alt="logo"
                     className="w-8 mb-16 md:w-10 lg:w-12"
@@ -24,26 +28,40 @@ const Dashboard = ({
                 Buckets
             </div>
             <div className={`
-                flex flex-col ${bucketStyle} min-h-[50vh] w-full md:w-[80%] lg:w-[50%]
+                flex flex-col ${bucketStyle} min-h-[50vh] w-full md:w-[80%] lg:w-[50%] pb-8
             `}>
                 {
                     buckets.length ?
-                    buckets.map((item) => {
-                        return (
-                            <Bucket 
-                                key={item.name}
-                                name={item.name}
-                                goal={item.goal}
-                                saved={item.saved}
-                                payments={item.payments}
-                            />
-                        );
-                    })
-                    :
-                    <div className="text-center text-light text-sm">
-                        No buckets found, create one
-                    </div>
-            }
+                        buckets.map((item) => {
+                            return (
+                                <Bucket
+                                    key={item.name}
+                                    name={item.name}
+                                    goal={item.goal}
+                                    saved={item.saved}
+                                    payments={item.payments}
+                                />
+                            );
+                        })
+                        :
+                        <div className="text-center text-light text-sm">
+                            No buckets found, create one
+                        </div>
+                }
+            </div>
+            <div className="
+                w-full bg-background flex items-center justify-center p-4 fixed bottom-0 left-0
+            ">
+                <Link
+                    to="/add-new-bucket"
+                    className="cursor-pointer"
+                >
+                    <img
+                        src={add}
+                        alt="add icon used to add a new project"
+                        className="w-12 lg:w-14"
+                    />
+                </Link>
             </div>
         </div>
     );

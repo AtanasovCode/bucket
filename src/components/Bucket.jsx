@@ -17,7 +17,7 @@ const Bucket = ({
 
     return (
         <div className="
-            w-full mb-12 flex flex-col cursor-pointer transition-all duration-500
+            w-full mb-6 flex flex-col cursor-pointer transition-all duration-500
             hover:bg-accent-hover p-6
         ">
             <div className="flex items-center justify-between">
