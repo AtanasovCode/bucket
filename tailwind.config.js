@@ -10,8 +10,8 @@ export default {
         'background': "#050027",
         'inactive': "#4D4D4D",
         'accent': "#53C1FF",
-        'text': "#EBEDF0",
-        'text-light': "#A8A8A8",
+        'white': "#EBEDF0",
+        'light': "#A8A8A8",
       },
       fontFamily: {
         'sans': "Lato",

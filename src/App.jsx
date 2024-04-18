@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { buckets } from "./data/Data";
 
 //routes
 import Dashboard from "./routes/Dashboard";
@@ -7,7 +8,7 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Dashboard />
+      element: <Dashboard buckets={buckets} />
     },
   ])
 
