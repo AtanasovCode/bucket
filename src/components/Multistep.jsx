@@ -6,26 +6,27 @@ const Multistep = ({
     changeStep,
     nextStep,
     name,
+    goal,
 }) => {
 
     const styleWidth = currentStep === 2 ? "w-full" : "w-0";
-    const buttonStyle = name ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default"
+    const nextStyle = name ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default"
+    const saveStyle = goal ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default"
 
     return (
         <div className="
         flex flex-col items-center justify-center transition-colors duration-500
-        absolute bottom-[8%] left-[50%] translate-x-[-50%]
         w-[85%] sm:w-[60%] md:w-[45%] lg:w-[30%]
     ">
-            <div className="w-full flex items-center justify-center mb-12">
+            <div className="w-full flex items-center justify-center mb-6">
                 <input
                     type="button"
-                    value="Next"
+                    value={currentStep == 1 ? "Next" : "Save"}
                     className={`
                         px-6 py-4 text-center rounded-xl
                         w-full
                         transition-colors duration-700
-                        ${buttonStyle}
+                        ${currentStep === 1 ? nextStyle : saveStyle}
                     `}
                     onClick={() => nextStep()}
                 />

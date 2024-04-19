@@ -19,34 +19,42 @@ const Add = ({
     //used for the steps progress
     const changeStep = (step) => {
         name ?
-        setCurrentStep(step) : setError(true);
+            setCurrentStep(step) : setError(true);
 
     }
 
     //used for the 'Next" button
     const nextStep = () => {
-        name ? 
-        setCurrentStep(step += 1) : setError(true);
+        name ?
+            setCurrentStep(currentStep + 1) : setError(true);
     }
 
     return (
-        <div className="w-full flex flex-col items-center justify-center py-12">
-            <Logo />
-            <div className="w-full">
-                {
-                    currentStep === 1 ?
-                        <BucketName 
-                            name={name}
-                            setName={setName}
-                            error={error}
-                            setError={setError}
-                        />
-                        :
-                        <BucketGoal 
-                            goal={goal}
-                            setGoal={setGoal}
-                        />
-                }
+        <div className="w-full min-h-[100vh] relative flex flex-col items-center justify-between py-12">
+            <div className="w-full flex flex-col items-center justify-center">
+                <img
+                    src={logo}
+                    alt="logo"
+                    className="w-8 mb-6 md:w-10 lg:w-12"
+                />
+                <div className="w-full">
+                    {
+                        currentStep === 1 ?
+                            <BucketName
+                                name={name}
+                                setName={setName}
+                                error={error}
+                                setError={setError}
+                            />
+                            :
+                            <BucketGoal
+                                goal={goal}
+                                setGoal={setGoal}
+                                error={error}
+                                setError={setError}
+                            />
+                    }
+                </div>
             </div>
             <Multistep
                 currentStep={currentStep}
