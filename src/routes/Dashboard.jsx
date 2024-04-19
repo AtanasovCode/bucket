@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Bucket from '../components/Bucket';
+import Logo from '../components/Logo';
 
 //importing assets
 import logo from '../assets/logo.svg';
@@ -17,13 +18,7 @@ const Dashboard = ({
             min-h-[100vh] bg-background w-full py-12 relative
             flex flex-col items-center justify-start
         ">
-            <div>
-                <img
-                    src={logo}
-                    alt="logo"
-                    className="w-8 mb-16 md:w-10 lg:w-12"
-                />
-            </div>
+            <Logo />
             <div className="w-full flex items-center justify-center text-light text-md mb-16 md:text-lg lg:text-lg">
                 Buckets
             </div>
