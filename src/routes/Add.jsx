@@ -20,6 +20,7 @@ const Add = ({
     const changeStep = (step) => {
         name ?
         setCurrentStep(step) : setError(true);
+
     }
 
     //used for the 'Next" button
@@ -31,12 +32,14 @@ const Add = ({
     return (
         <div className="w-full flex flex-col items-center justify-center py-12">
             <Logo />
-            <div>
+            <div className="w-full">
                 {
                     currentStep === 1 ?
                         <BucketName 
                             name={name}
                             setName={setName}
+                            error={error}
+                            setError={setError}
                         />
                         :
                         <BucketGoal 

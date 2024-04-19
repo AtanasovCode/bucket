@@ -15,14 +15,15 @@ const Multistep = ({
         <div className="
         flex flex-col items-center justify-center transition-colors duration-500
         absolute bottom-[8%] left-[50%] translate-x-[-50%]
-        w-[60%] sm:w-[30%] lg:w-[12%]
+        w-[85%] sm:w-[60%] md:w-[45%] lg:w-[30%]
     ">
-            <div className="">
+            <div className="w-full flex items-center justify-center mb-12">
                 <input
                     type="button"
                     value="Next"
                     className={`
-                        px-16 py-2 text-center mb-8 rounded-xl
+                        px-6 py-4 text-center rounded-xl
+                        w-full
                         transition-colors duration-700
                         ${buttonStyle}
                     `}
