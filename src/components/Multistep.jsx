@@ -7,6 +7,7 @@ const Multistep = ({
     nextStep,
     name,
     goal,
+    addBucket,
 }) => {
 
     const styleWidth = currentStep === 2 ? "w-full" : "w-0";
@@ -28,7 +29,7 @@ const Multistep = ({
                         transition-colors duration-700
                         ${currentStep === 1 ? nextStyle : saveStyle}
                     `}
-                    onClick={() => nextStep()}
+                    onClick={() => currentStep === 1 ? nextStep() : addBucket()}
                 />
             </div>
             <div className="w-full flex items-center justify-center">
