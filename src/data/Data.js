@@ -2,6 +2,7 @@
 
 const buckets = [
     {
+        id: 111111111,
         name: "Light Bee X",
         goal: 4500,
         saved: 2742.26,

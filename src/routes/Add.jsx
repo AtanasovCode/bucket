@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 
 import Multistep from "../components/Multistep";
 import BucketName from "../components/BucketName";
@@ -39,6 +40,7 @@ const Add = ({
         // Check if both name and goal are provided and not empty
         if (name && goal) {
             const newBucket = {
+                id: uuidv4(),
                 name: name,
                 goal: goal,
                 saved: 0, // You can set this to any default value

@@ -30,7 +30,7 @@ const Dashboard = ({
                         buckets.map((item) => {
                             return (
                                 <DashboardItem
-                                    key={item.name}
+                                    key={item.id}
                                     name={item.name}
                                     goal={item.goal}
                                     saved={item.saved}
