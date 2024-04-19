@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Bucket from '../components/Bucket';
+import DashboardItem from '../components/DashboardItem';
 import Logo from '../components/Logo';
 
 //importing assets
@@ -29,7 +29,7 @@ const Dashboard = ({
                     buckets.length ?
                         buckets.map((item) => {
                             return (
-                                <Bucket
+                                <DashboardItem
                                     key={item.name}
                                     name={item.name}
                                     goal={item.goal}

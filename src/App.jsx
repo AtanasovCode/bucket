@@ -4,6 +4,7 @@ import { buckets } from "./data/Data";
 //routes
 import Dashboard from "./routes/Dashboard";
 import Add from "./routes/Add"; //add a new bucket
+import Bucket from "./routes/Bucket";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const App = () => {
     {
       path: "/add-new-bucket",
       element: <Add buckets={buckets} />
+    },
+    {
+      path: "/bucket/:bucket-name",
+      element: <Bucket />
     },
   ])
 
