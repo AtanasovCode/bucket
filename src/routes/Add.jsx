@@ -12,11 +12,20 @@ const Add = ({
 }) => {
 
     const [currentStep, setCurrentStep] = useState(1);
+    const [error, setError] = useState(false);
     const [name, setName] = useState("");
     const [goal, setGoal] = useState("");
 
+    //used for the steps progress
     const changeStep = (step) => {
-        setCurrentStep(step);
+        name ?
+        setCurrentStep(step) : setError(true);
+    }
+
+    //used for the 'Next" button
+    const nextStep = () => {
+        name ? 
+        setCurrentStep(step += 1) : setError(true);
     }
 
     return (
@@ -39,6 +48,8 @@ const Add = ({
             <Multistep
                 currentStep={currentStep}
                 changeStep={changeStep}
+                nextStep={nextStep}
+                name={name}
             />
         </div>
     );

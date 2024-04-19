@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         'background': "#050027",
-        'inactive': "#4D4D4D",
+        'inactive': "#082f49",
         'accent': "#53C1FF",
         'accent-hover': "#53C1FF30",
         'white': "#EBEDF0",
