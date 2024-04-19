@@ -26,7 +26,7 @@ const Bucket = ({
     };
 
     const getRemaining = (goal, saved) => {
-        let result = parseInt(goal) - parseInt(saved);
+        let result = parseFloat(goal) - parseFloat(saved);
         return result;
     }
 
@@ -70,7 +70,7 @@ const Bucket = ({
                 </div>
             </div>
 
-            <div className="flex flex-col items-end justify-center mb-4">
+            <div className="flex flex-col items-end justify-center mb-6">
                 <div className="text-accent font-mono text-4xl mb-1">
                     {formatMoney(bucket.saved)} $
                 </div>
