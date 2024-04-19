@@ -16,11 +16,14 @@ const BucketName = ({
             </div>
             <BucketInput
                 error={error}
+                type="text"
                 setError={setError}
                 handleChange={setName}
                 value={name}
                 style={buttonStyle}
                 placeholder="Gaming chair"
+                errorMessage="Enter bucket name"
+                maxValue="20"
             />
         </div >
     );

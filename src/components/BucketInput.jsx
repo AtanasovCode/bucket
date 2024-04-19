@@ -4,7 +4,10 @@ const BucketInput = ({
     error,
     setError,
     style,
-    placeholder
+    type,
+    placeholder,
+    errorMessage,
+    maxValue,
 }) => {
     return (
         <div className="flex flex-col items-center justify-center mb-4
@@ -18,13 +21,13 @@ const BucketInput = ({
                     handleChange(e.currentTarget.value);
                     setError(false);
                 }}
-                maxLength={20}
+                maxLength={maxValue}
                 className={`w-full px-6 py-4 bg-inactive rounded-xl outline-none ${style}`}
             />
             {
                 error &&
                 <div className="w-full flex items-center justify-start text-red-400 text-sm mt-2 pl-4">
-                    Input bucket name
+                    {errorMessage}
                 </div>
             }
         </div>

@@ -19,13 +19,20 @@ const BucketGoal = ({
             </div>
             <BucketInput
                 value={goal}
+                type="number"
                 handleChange={setGoal}
                 error={error}
                 setError={setError}
                 style={buttonStyle}
-                placeholder="259.99"
+                placeholder="299.99"
+                errorMessage="Enter numeric value"
+                maxValue="9"
             />
-            <Numpad />
+            <Numpad 
+                goal={goal}
+                setGoal={setGoal}
+                setError={setError}
+            />
         </div>
     );
 }

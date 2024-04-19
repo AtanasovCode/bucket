@@ -1,8 +1,24 @@
 import { useState } from "react";
 
-const Numpad = () => {
+const Numpad = ({
+    goal,
+    setGoal,
+    setError,
+}) => {
 
     const [values, setValues] = useState(["7", "8", "9", "4", "5", "6", "1", "2", "3", ".", "0", "Del"]);
+
+
+    const handleClick = (value) => {
+
+        if(value !== "Del") {
+            setGoal(goal + value)
+        } else {
+            setGoal(goal.slice(0, -1))
+        }
+
+        console.log(goal);
+    }
 
     return (
         <div className="
@@ -16,8 +32,12 @@ const Numpad = () => {
                             key={value}
                             className="
                                 p-4 cursor-pointer bg-inactive text-white text-center font-bold text-2xl font-mono
-                                hover:bg-accent hover:text-background transition-colors duration-400
+                                hover:bg-accent hover:text-background transition-colors duration-400 rounded-xl
                             "
+                            onClick={() => {
+                                handleClick(value)
+                                setError(false);
+                            }}
                         >
                             {value}
                         </div>

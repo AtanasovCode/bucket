@@ -10,8 +10,8 @@ const Multistep = ({
 }) => {
 
     const styleWidth = currentStep === 2 ? "w-full" : "w-0";
-    const nextStyle = name ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default"
-    const saveStyle = goal ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default"
+    const nextStyle = name ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default";
+    const saveStyle = goal ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default";
 
     return (
         <div className="

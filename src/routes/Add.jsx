@@ -13,6 +13,7 @@ const Add = ({
 
     const [currentStep, setCurrentStep] = useState(1);
     const [error, setError] = useState(false);
+    const [errorGoal, setErrorGoal] = useState(false);
     const [name, setName] = useState("");
     const [goal, setGoal] = useState("");
 
@@ -25,8 +26,11 @@ const Add = ({
 
     //used for the 'Next" button
     const nextStep = () => {
-        name ?
-            setCurrentStep(currentStep + 1) : setError(true);
+        if(currentStep === 1) {
+            name ? setCurrentStep(currentStep + 1) : setError(true);
+        } else {
+            goal ? "" : setErrorGoal(true);
+        }
     }
 
     return (
@@ -50,8 +54,8 @@ const Add = ({
                             <BucketGoal
                                 goal={goal}
                                 setGoal={setGoal}
-                                error={error}
-                                setError={setError}
+                                error={errorGoal}
+                                setError={setErrorGoal}
                             />
                     }
                 </div>
@@ -61,6 +65,7 @@ const Add = ({
                 changeStep={changeStep}
                 nextStep={nextStep}
                 name={name}
+                goal={goal}
             />
         </div>
     );
