@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { buckets } from "./data/Data";
 
@@ -7,18 +8,21 @@ import Add from "./routes/Add"; //add a new bucket
 import Bucket from "./routes/Bucket";
 
 const App = () => {
+
+  const [selectedBucket, setSelectedBucket] = useState({});
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Dashboard buckets={buckets} />
+      element: <Dashboard buckets={buckets} setSelectedBucket={setSelectedBucket}  />
     },
     {
       path: "/add-new-bucket",
       element: <Add buckets={buckets} />
     },
     {
-      path: "/bucket/:bucket-name",
-      element: <Bucket />
+      path: "/buckets/:bucket-name",
+      element: <Bucket buckets={buckets} selectedBucket={selectedBucket} />
     },
   ])
 

@@ -8,6 +8,7 @@ import add from '../assets/add-icon.svg';
 
 const Dashboard = ({
     buckets,
+    setSelectedBucket,
 }) => {
 
     const bucketStyle = buckets.length < 1 ? "items-center justify-center" : "items-center justify-start";
@@ -31,10 +32,12 @@ const Dashboard = ({
                             return (
                                 <DashboardItem
                                     key={item.id}
+                                    id={item.id}
                                     name={item.name}
                                     goal={item.goal}
                                     saved={item.saved}
                                     payments={item.payments}
+                                    setSelectedBucket={setSelectedBucket}
                                 />
                             );
                         })

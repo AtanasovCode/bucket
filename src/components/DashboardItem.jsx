@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const DashboardItem = ({
+    id,
     name,
     goal,
     saved,
-    payments,
+    setSelectedBucket,
 }) => {
+
+    const navigate = useNavigate();
 
     const formatMoney = (money) => {
         return money.toLocaleString('en-US', { minimumFractionDigits: 2 });
@@ -23,12 +26,16 @@ const DashboardItem = ({
     const progressWidth = getProgress(saved, goal) + '%';
 
     return (
-        <Link 
-            to={`/bucket/${formatName(name)}`}
+        <div
             className="
             w-full mb-6 flex flex-col cursor-pointer transition-all duration-500
             hover:bg-accent-hover p-6
-        ">
+        "
+            onClick={() => {
+                setSelectedBucket(id);
+                navigate(`/buckets/${formatName(name)}`)
+            }}
+        >
             <div className="flex items-center justify-between">
                 <div className="text-xl text-white font-sans text-left md:text-lg">
                     {name}
@@ -40,7 +47,7 @@ const DashboardItem = ({
             <div className="w-full h-1 rounded-2xl bg-inactive relative mt-4 overflow-hidden">
                 <div className="h-full rounded-2xl absolute top-0 left-0 bg-accent" style={{ width: progressWidth }}></div>
             </div>
-        </Link>
+        </div>
     );
 }
 
