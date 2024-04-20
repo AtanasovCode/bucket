@@ -24,7 +24,6 @@ const AddPayment = ({ buckets, selectedBucket }) => {
 
     const handleAddPayment = () => {
         if (dd && mm && yy && paymentAmount) {
-            console.log("Click");
             let date = `${dd}/${mm}/${yy}`;
 
             let paymentDetails = {
@@ -41,9 +40,8 @@ const AddPayment = ({ buckets, selectedBucket }) => {
                         bucket.payments = [];
                     }
                     bucket.payments.push(paymentDetails);
+                    bucket.saved = (parseFloat(bucket.saved) + parseFloat(paymentAmount)).toFixed(2);
                 }
-
-                bucket.saved = (parseFloat(bucket.saved) + parseFloat(paymentAmount)).toFixed(2);
             });
 
             navigate(`/`);

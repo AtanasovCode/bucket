@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { buckets } from "./data/Data";
 
@@ -11,6 +11,10 @@ import AddPayment from "./components/AddPayment";
 const App = () => {
 
   const [selectedBucket, setSelectedBucket] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem("buckets", JSON.stringify(buckets));
+  }, [buckets])
 
   const router = createBrowserRouter([
     {

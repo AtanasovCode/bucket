@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardItem from '../components/DashboardItem';
 import Logo from '../components/Logo';
@@ -7,8 +8,8 @@ import logo from '../assets/logo.svg';
 import add from '../assets/add-icon.svg';
 
 const Dashboard = ({
-    buckets,
     setSelectedBucket,
+    buckets,
 }) => {
 
     const bucketStyle = buckets.length < 1 ? "items-center justify-center" : "items-center justify-start";
