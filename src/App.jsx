@@ -6,6 +6,7 @@ import { buckets } from "./data/Data";
 import Dashboard from "./routes/Dashboard";
 import Add from "./routes/Add"; //add a new bucket
 import Bucket from "./routes/Bucket";
+import AddPayment from "./components/AddPayment";
 
 const App = () => {
 
@@ -14,7 +15,7 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Dashboard buckets={buckets} setSelectedBucket={setSelectedBucket}  />
+      element: <Dashboard buckets={buckets} setSelectedBucket={setSelectedBucket} />
     },
     {
       path: "/add-new-bucket",
@@ -22,7 +23,14 @@ const App = () => {
     },
     {
       path: "/buckets/:bucket-name",
-      element: <Bucket buckets={buckets} selectedBucket={selectedBucket} />
+      element: <Bucket buckets={buckets} selectedBucket={selectedBucket} />,
+      children: [
+
+      ]
+    },
+    {
+      path: "/buckets/:bucket-name/new-payment",
+      element: <AddPayment />
     },
   ])
 

@@ -9,6 +9,7 @@ const BucketInput = ({
     errorMessage,
     maxValue,
 }) => {
+
     return (
         <div className="flex flex-col items-center justify-center mb-4
         w-[85%] sm:w-[60%] md:w-[45%] lg:w-[30%]
