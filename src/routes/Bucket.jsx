@@ -1,10 +1,9 @@
 import { useState } from "react";
 
+import Overview from "../components/Overview";
+import Payments from "../components/Payments";
 import Tabs from "../components/Tabs";
 import Logo from "../components/Logo";
-import Progress from "../components/Progress";
-
-import { PiggyBank } from "@phosphor-icons/react";
 
 
 const Bucket = ({
@@ -58,43 +57,19 @@ const Bucket = ({
                     changeTab={changeTab}
                 />
             </div>
-
-            <div className="flex flex-col items-center justify-center mb-6">
-                <div className="flex items-center justify-center">
-                    <PiggyBank
-                        size="100%"
-                        weight="fill"
-                        className="w-12 h-12 text-light"
+            {
+                selectedTab === "Overview" ?
+                    <Overview
+                        bucket={bucket}
+                        formatMoney={formatMoney}
+                        getRemaining={getRemaining}
+                        getProgress={getProgress}
                     />
-                    <div className="text-light ml-4">Balance</div>
-                </div>
-            </div>
-
-            <div className="flex flex-col items-end justify-center mb-6">
-                <div className="text-accent font-mono text-4xl mb-1">
-                    {formatMoney(bucket.saved)} $
-                </div>
-                <div className="text-right text-light font-mono">
-                    / {formatMoney(bucket.goal)} $
-                </div>
-            </div>
-
-            <div className="flex items-center justiy-center mb-10">
-                <div className="text-light mr-2">Remaining:</div>
-                <div className="font-mono text-accent">
-                    {formatMoney(getRemaining(bucket.goal, bucket.saved))} $
-                </div>
-            </div>
-
-            <div className="flex flex-col items-center justify-center w-[80%]">
-                <div className="text-light text-lg">
-                    Progress: <span className="text-accent font-mono ml-2">{getProgress(bucket.saved, bucket.goal)}%</span> 
-                </div>
-                <Progress 
-                    goal={bucket.goal}
-                    saved={bucket.saved}
-                />
-            </div>
+                    :
+                    <Payments 
+                        bucket={bucket}
+                    />
+            }
         </div>
     );
 }
