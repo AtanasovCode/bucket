@@ -42,6 +42,8 @@ const AddPayment = ({ buckets, selectedBucket }) => {
                     }
                     bucket.payments.push(paymentDetails);
                 }
+
+                bucket.saved = (parseFloat(bucket.saved) + parseFloat(paymentAmount)).toFixed(2);
             });
 
             navigate(`/`);
