@@ -1,5 +1,7 @@
 import { Vault, ClockCounterClockwise } from "@phosphor-icons/react";
 
+import addIcon from '../assets/add-icon.svg';
+
 const Payments = ({
     bucket,
 }) => {
@@ -17,7 +19,7 @@ const Payments = ({
                 bucket.payments.map((payment) => {
                     return (
                         <div className="flex items-center justify-between mb-4
-                            w-[85%] sm:w-[70%]
+                            w-[85%] sm:w-[60%] md:w-[50%] lg:w-[35%]
                         ">
                             <div className="flex items-center justify-center">
                                 <Vault
@@ -36,6 +38,13 @@ const Payments = ({
                     );
                 })
             }
+            <div className="w-full flex items-center justify-center">
+                <img 
+                    src={addIcon}
+                    alt="add icon used for adding a new payment"
+                    className="w-12 h-12 mt-6"
+                />
+            </div>
         </div>
     );
 }
