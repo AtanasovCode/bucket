@@ -11,6 +11,10 @@ const Payments = ({
         return name.toLowerCase().replace(/\s+/g, '-');
     }
 
+    const formatMoney = (money) => {
+        return money.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    };
+
     return (
         <div className="w-full flex flex-col items-center justify-center font-sans">
             <div className="text-light text-sm mb-8 flex items-center justify-center">
@@ -22,9 +26,11 @@ const Payments = ({
                 <div className="ml-4">History</div>
             </div>
             {
-                bucket.payments.map((payment) => {
+                bucket.payments.length > 0 ? bucket.payments.map((payment) => {
                     return (
-                        <div className="flex items-center justify-between mb-4
+                        <div
+                            key={payment.id}
+                            className="flex items-center justify-between mb-4
                             w-[85%] sm:w-[60%] md:w-[50%] lg:w-[35%]
                         ">
                             <div className="flex items-center justify-center">
@@ -38,11 +44,11 @@ const Payments = ({
                                 </div>
                             </div>
                             <div className="font-mono text-lg text-accent text-right">
-                                {payment.amount} $
+                                {formatMoney(parseFloat(payment.amount))} $
                             </div>
                         </div>
                     );
-                })
+                }) : <div>No Payment History</div>
             }
             <Link
                 to={`/buckets/${formatName(bucket.name)}/new-payment`}

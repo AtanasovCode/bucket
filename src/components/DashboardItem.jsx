@@ -21,11 +21,6 @@ const DashboardItem = ({
     }
 
 
-    const getProgress = (saved, goal) => {
-        return (saved / goal) * 100;
-    }
-
-    const progressWidth = getProgress(saved, goal) + '%';
 
     return (
         <div

@@ -21,7 +21,8 @@ const Bucket = ({
     }
 
     const formatMoney = (money) => {
-        return money.toLocaleString('en-US', { minimumFractionDigits: 2 });
+        let parsedMoney = parseFloat(money);
+        return parsedMoney.toLocaleString('en-US', { minimumFractionDigits: 2 });
     };
 
     const getRemaining = (goal, saved) => {

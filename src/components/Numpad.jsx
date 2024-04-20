@@ -23,7 +23,7 @@ const Numpad = ({
     return (
         <div className="
             grid grid-cols-3 mb-6 gap-1
-            w-[85%] sm:w-[60%] md:w-[45%] lg:w-[30%]
+            w-[85%] sm:w-[60%] md:w-[55%] lg:w-[30%]
         ">
             {
                 values.map((value) => {
@@ -32,7 +32,7 @@ const Numpad = ({
                             key={value}
                             className="
                                 p-4 cursor-pointer bg-inactive text-white text-center font-bold text-2xl font-mono
-                                hover:bg-accent hover:text-background transition-colors duration-400 rounded-xl
+                                hover:bg-accent hover:text-background transition-colors duration-500 rounded-xl
                             "
                             onClick={() => {
                                 handleClick(value)

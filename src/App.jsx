@@ -30,7 +30,7 @@ const App = () => {
     },
     {
       path: "/buckets/:bucket-name/new-payment",
-      element: <AddPayment />
+      element: <AddPayment buckets={buckets} selectedBucket={selectedBucket} />
     },
   ])
 
