@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { stringify, v4 as uuidv4 } from 'uuid';
 
 import Multistep from "../components/Multistep";
 import BucketName from "../components/BucketName";
@@ -10,9 +9,8 @@ import logo from '../assets/logo.svg';
 
 const Add = ({
     buckets,
+    addBucket,
 }) => {
-
-    const navigate = useNavigate();
 
     const [currentStep, setCurrentStep] = useState(1);
     const [error, setError] = useState(false);
@@ -35,23 +33,6 @@ const Add = ({
             goal ? "" : setErrorGoal(true);
         }
     }
-
-    const addBucket = () => {
-        // Check if both name and goal are provided and not empty
-        if (name && goal) {
-            const newBucket = {
-                id: uuidv4(),
-                name: name,
-                goal: goal,
-                saved: 0, // You can set this to any default value
-                payments: {} // Empty payments object initially
-            };
-            buckets.push(newBucket); // Add the new bucket to the buckets array
-            navigate("/");
-        } else {
-            console.error("Name and goal must be provided.");
-        }
-    };
 
     return (
         <div className="w-full min-h-[100vh] relative flex flex-col items-center justify-between py-12">
@@ -76,7 +57,6 @@ const Add = ({
                                 setGoal={setGoal}
                                 error={errorGoal}
                                 setError={setErrorGoal}
-                                addBucket={addBucket}
                             />
                     }
                 </div>
@@ -88,6 +68,7 @@ const Add = ({
                 nextStep={nextStep}
                 name={name}
                 goal={goal}
+                buckets={buckets}
             />
         </div>
     );

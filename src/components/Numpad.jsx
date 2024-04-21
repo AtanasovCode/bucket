@@ -17,7 +17,6 @@ const Numpad = ({
             setGoal(goal.slice(0, -1))
         }
 
-        console.log(goal);
     }
 
     return (

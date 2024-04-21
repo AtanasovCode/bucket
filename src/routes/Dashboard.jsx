@@ -4,7 +4,6 @@ import DashboardItem from '../components/DashboardItem';
 import Logo from '../components/Logo';
 
 //importing assets
-import logo from '../assets/logo.svg';
 import add from '../assets/add-icon.svg';
 
 const Dashboard = ({
