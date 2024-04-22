@@ -16,7 +16,7 @@ const Payments = ({
     };
 
     return (
-        <div className="w-full flex flex-col items-center justify-center font-sans">
+        <div className="w-full flex flex-col items-center justify-start font-sans">
             <div className="text-light text-sm mb-8 flex items-center justify-center">
                 <ClockCounterClockwise
                     weight="light"
@@ -25,41 +25,45 @@ const Payments = ({
                 />
                 <div className="ml-4">History</div>
             </div>
-            {
-                bucket.payments.length > 0 ? bucket.payments.map((payment) => {
-                    return (
-                        <div
-                            key={payment.id}
-                            className="flex items-center justify-between mb-4
+            <div className="flex flex-col items-center justify-between w-full min-h-[35vh]">
+                {
+                    bucket.payments.length > 0 ? bucket.payments.map((payment) => {
+                        return (
+                            <div
+                                key={payment.id}
+                                className="flex items-center justify-between mb-4
                             w-[85%] sm:w-[60%] md:w-[50%] lg:w-[35%]
                         ">
-                            <div className="flex items-center justify-center">
-                                <Vault
-                                    weight="light"
-                                    size="100%"
-                                    className="w-8 h-8 text-accent inline-block"
-                                />
-                                <div className="text-light ml-6">
-                                    {payment.date}
+                                <div className="flex items-center justify-center">
+                                    <Vault
+                                        weight="light"
+                                        size="100%"
+                                        className="w-8 h-8 text-accent inline-block"
+                                    />
+                                    <div className="text-light ml-6">
+                                        {payment.date}
+                                    </div>
+                                </div>
+                                <div className="font-mono text-lg text-accent text-right">
+                                    {formatMoney(parseFloat(payment.amount))} $
                                 </div>
                             </div>
-                            <div className="font-mono text-lg text-accent text-right">
-                                {formatMoney(parseFloat(payment.amount))} $
-                            </div>
-                        </div>
-                    );
-                }) : <div>No Payment History</div>
-            }
-            <Link
-                to={`/buckets/${formatName(bucket.name)}/new-payment`}
-                className="w-full flex items-center justify-center"
-            >
-                <img
-                    src={addIcon}
-                    alt="add icon used for adding a new payment"
-                    className="w-12 h-12 mt-6"
-                />
-            </Link>
+                        );
+                    }) : <div className="text-light text-center">
+                        No Payment History
+                    </div>
+                }
+                <Link
+                    to={`/buckets/${formatName(bucket.name)}/new-payment`}
+                    className="w-full flex items-center justify-center"
+                >
+                    <img
+                        src={addIcon}
+                        alt="add icon used for adding a new payment"
+                        className="w-12 h-12 mt-6"
+                    />
+                </Link>
+            </div>
         </div>
     );
 }
