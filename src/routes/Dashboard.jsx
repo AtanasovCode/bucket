@@ -6,10 +6,7 @@ import Logo from '../components/Logo';
 //importing assets
 import add from '../assets/add-icon.svg';
 
-const Dashboard = ({
-    setSelectedBucket,
-    buckets,
-}) => {
+const Dashboard = ({buckets}) => {
 
     const bucketStyle = buckets.length < 1 ? "items-center justify-center" : "items-center justify-start";
 
@@ -37,7 +34,6 @@ const Dashboard = ({
                                     goal={item.goal}
                                     saved={item.saved}
                                     payments={item.payments}
-                                    setSelectedBucket={setSelectedBucket}
                                 />
                             );
                         })

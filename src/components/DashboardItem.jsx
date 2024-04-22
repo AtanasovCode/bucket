@@ -7,7 +7,6 @@ const DashboardItem = ({
     name,
     goal,
     saved,
-    setSelectedBucket,
 }) => {
 
     const navigate = useNavigate();
@@ -29,7 +28,8 @@ const DashboardItem = ({
             hover:bg-accent-hover p-6
         "
             onClick={() => {
-                setSelectedBucket(id);
+                localStorage.setItem("id", id);
+                console.log(localStorage.getItem("id"));
                 navigate(`/buckets/${formatName(name)}`)
             }}
         >

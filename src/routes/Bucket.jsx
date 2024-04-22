@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Overview from "../components/Overview";
 import Payments from "../components/Payments";
@@ -6,13 +6,19 @@ import Tabs from "../components/Tabs";
 import Logo from "../components/Logo";
 
 
-const Bucket = ({
-    buckets,
-    selectedBucket,
-}) => {
+const Bucket = ({ buckets }) => {
 
     // Find the selected bucket in the array
-    const bucket = buckets.find((bucket) => bucket.id === selectedBucket);
+    let bucket = buckets.find((bucket) => bucket.id === localStorage.getItem("id"));
+
+    useEffect(() => {
+        console.log("Finding id");
+        bucket = buckets.find((bucket) => bucket.id === localStorage.getItem("id"));
+    }, [])
+
+    useEffect(() => {
+        console.log(bucket);
+    }, [])
 
     const [selectedTab, setSelectedTab] = useState("Overview");
 
@@ -67,7 +73,7 @@ const Bucket = ({
                         getProgress={getProgress}
                     />
                     :
-                    <Payments 
+                    <Payments
                         bucket={bucket}
                     />
             }

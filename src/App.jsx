@@ -12,7 +12,23 @@ import AddPayment from "./components/AddPayment";
 const App = () => {
 
   const [buckets, setBuckets] = useState([]);
-  const [selectedBucket, setSelectedBucket] = useState({});
+
+  useEffect(() => {
+    const prevBuckets = buckets;
+
+    if (prevBuckets.length && prevBuckets !== JSON.parse(localStorage.getItem("buckets"))) {
+      localStorage.setItem("buckets", JSON.stringify(buckets));
+      console.log("Saved buckets");
+    } else {
+      console.log("Skipping bucket update");
+    }
+
+  }, [buckets])
+
+  useEffect(() => {
+    let parsedBuckets = JSON.parse(localStorage.getItem("buckets"));
+    parsedBuckets ? setBuckets(parsedBuckets) : setBuckets([]);
+  }, [])
 
   const addBucket = (name, goal) => {
     // Check if both name and goal are provided and not empty
@@ -45,7 +61,7 @@ const App = () => {
       const updatedBuckets = [...buckets];
 
       updatedBuckets.forEach((bucket) => {
-        if (bucket.id === selectedBucket) {
+        if (bucket.id === localStorage.getItem("id")) {
           // Check if bucket.payments exists and is an array
           if (!Array.isArray(bucket.payments)) {
             // If it's not an array, initialize it as an empty array
@@ -66,7 +82,7 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Dashboard setSelectedBucket={setSelectedBucket} buckets={buckets} />
+      element: <Dashboard buckets={buckets} />
     },
     {
       path: "/add-new-bucket",
@@ -74,14 +90,14 @@ const App = () => {
     },
     {
       path: "/buckets/:bucket-name",
-      element: <Bucket buckets={buckets} selectedBucket={selectedBucket} />,
+      element: <Bucket buckets={buckets} />,
       children: [
 
       ]
     },
     {
       path: "/buckets/:bucket-name/new-payment",
-      element: <AddPayment buckets={buckets} selectedBucket={selectedBucket} handleAddPayment={handleAddPayment} />
+      element: <AddPayment buckets={buckets} handleAddPayment={handleAddPayment} />
     },
   ])
 
