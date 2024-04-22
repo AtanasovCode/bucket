@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
 
 
 import Logo from "./Logo";
@@ -8,7 +7,7 @@ import Numpad from "./Numpad";
 import BucketInput from "./BucketInput";
 import InputDate from "./InputData";
 
-const AddPayment = ({ handleAddPayment }) => {
+const AddPayment = ({ handleAddPayment, buckets }) => {
 
     const navigate = useNavigate();
 
@@ -21,6 +20,20 @@ const AddPayment = ({ handleAddPayment }) => {
     const inputStyle = "text-center font-mono";
 
     const buttonStyle = paymentAmount && mm && dd && yy ? "bg-accent text-background cursor-pointer" : "bg-inactive text-light cursor-default"
+
+    const formatName = (name) => {
+        return name.toLowerCase().replace(/\s+/g, '-');
+    }
+
+    const [bucketName, setBucketName] = useState("");
+
+    useEffect(() => {
+        buckets.map((bucket) => {
+            if(bucket.id === localStorage.getItem("id")) {
+                setBucketName(bucket.name);
+            }
+        })
+    }, [])
 
     return (
         <div className="w-full min-h-[100vh] flex flex-col items-center justify-start font-sans text-white py-8">
@@ -76,7 +89,7 @@ const AddPayment = ({ handleAddPayment }) => {
                     `}
                     onClick={() => {
                         handleAddPayment(dd, mm, yy, paymentAmount);
-                        navigate("/");
+                        navigate(`/buckets/${formatName(bucketName)}`);
                     }}
                 />
             </div>

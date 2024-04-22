@@ -25,7 +25,7 @@ const Payments = ({
                 />
                 <div className="ml-4">History</div>
             </div>
-            <div className="flex flex-col items-center justify-between w-full min-h-[35vh]">
+            <div className="flex flex-col items-center justify-between w-full mb-12">
                 {
                     bucket.payments.length > 0 ? bucket.payments.map((payment) => {
                         return (
@@ -55,7 +55,7 @@ const Payments = ({
                 }
                 <Link
                     to={`/buckets/${formatName(bucket.name)}/new-payment`}
-                    className="w-full flex items-center justify-center"
+                    className="w-full flex items-center justify-center bg-background p-2 fixed bottom-0 left-0"
                 >
                     <img
                         src={addIcon}
