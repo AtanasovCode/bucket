@@ -13,6 +13,13 @@ const App = () => {
 
   const [buckets, setBuckets] = useState([]);
 
+  //errors
+  const [ddErr, setDDErr] = useState(false);
+  const [mmErr, setMMErr] = useState(false);
+  const [yyErr, setYYErr] = useState(false);
+  const [moneyErr, setMoneyErr] = useState(false);
+
+
   useEffect(() => {
     const prevBuckets = buckets;
 
@@ -48,35 +55,38 @@ const App = () => {
   };
 
   const handleAddPayment = (dd, mm, yy, paymentAmount) => {
-    if (dd && mm && yy && paymentAmount) {
-      let date = `${dd}/${mm}/${yy}`;
+    setMoneyErr(paymentAmount && !isNaN(paymentAmount) ? false : true);
+    setDDErr(dd && dd <= 31 && !isNaN(dd) ? false : true);
+    setMMErr(mm && mm <= 12 && !isNaN(mm) ? false : true);
+    setYYErr(yy && !isNaN(yy) ? false : true);
 
-      let paymentDetails = {
-        date: date,
-        amount: paymentAmount,
-        id: uuidv4(),
-      };
+    // Use useEffect to perform the updates after the state has been updated
+    useEffect(() => {
+      if (!ddErr && !mmErr && !yyErr && !moneyErr) {
+        let date = `${dd}/${mm}/${yy}`;
 
-      // Access the current buckets state
-      const updatedBuckets = [...buckets];
+        let paymentDetails = {
+          date: date,
+          amount: paymentAmount,
+          id: uuidv4(),
+        };
 
-      updatedBuckets.forEach((bucket) => {
-        if (bucket.id === localStorage.getItem("id")) {
-          // Check if bucket.payments exists and is an array
-          if (!Array.isArray(bucket.payments)) {
-            // If it's not an array, initialize it as an empty array
-            bucket.payments = [];
+        const updatedBuckets = [...buckets];
+
+        updatedBuckets.forEach((bucket) => {
+          if (bucket.id === localStorage.getItem("id")) {
+            if (!Array.isArray(bucket.payments)) {
+              bucket.payments = [];
+            }
+            bucket.payments.push(paymentDetails);
+            bucket.saved = (parseFloat(bucket.saved) + parseFloat(paymentAmount)).toFixed(2);
           }
-          bucket.payments.push(paymentDetails);
-          bucket.saved = (parseFloat(bucket.saved) + parseFloat(paymentAmount)).toFixed(2);
-        }
-      });
+        });
 
-      // Update the state with the modified buckets array
-      setBuckets(updatedBuckets);
-    }
+        setBuckets(updatedBuckets);
+      }
+    }, [ddErr, mmErr, yyErr, moneyErr]);
   };
-
 
 
   const router = createBrowserRouter([
@@ -97,7 +107,18 @@ const App = () => {
     },
     {
       path: "/buckets/:bucket-name/new-payment",
-      element: <AddPayment buckets={buckets} handleAddPayment={handleAddPayment} />
+      element: <AddPayment
+        buckets={buckets}
+        handleAddPayment={handleAddPayment}
+        moneyErr={moneyErr}
+        setMoneyErr={setMoneyErr}
+        ddErr={ddErr}
+        setDDErr={setDDErr}
+        mmErr={mmErr}
+        setMMErr={setMMErr}
+        yyErr={yyErr}
+        setYYErr={setYYErr}
+      />
     },
   ])
 

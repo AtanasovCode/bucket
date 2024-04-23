@@ -12,7 +12,7 @@ const DashboardItem = ({
     const navigate = useNavigate();
 
     const formatMoney = (money) => {
-        return money.toLocaleString('en-US', { minimumFractionDigits: 2 });
+        return parseFloat(money).toLocaleString('en-US', { minimumFractionDigits: 2 });
     };
 
     const formatName = (name) => {

@@ -7,7 +7,13 @@ import Numpad from "./Numpad";
 import BucketInput from "./BucketInput";
 import InputDate from "./InputData";
 
-const AddPayment = ({ handleAddPayment, buckets }) => {
+const AddPayment = ({
+    handleAddPayment,
+    buckets,
+    ddErr, mmErr, yyErr,
+    setDDErr, setMMErr, setYYErr,
+    moneyErr, setMoneyErr,
+}) => {
 
     const navigate = useNavigate();
 
@@ -29,7 +35,7 @@ const AddPayment = ({ handleAddPayment, buckets }) => {
 
     useEffect(() => {
         buckets.map((bucket) => {
-            if(bucket.id === localStorage.getItem("id")) {
+            if (bucket.id === localStorage.getItem("id")) {
                 setBucketName(bucket.name);
             }
         })
@@ -49,23 +55,32 @@ const AddPayment = ({ handleAddPayment, buckets }) => {
                     date="DD"
                     value={dd}
                     setValue={setDD}
+                    err={ddErr}
+                    errMsg="Enter valid day"
+                    setErr={setDDErr}
                 />
                 <InputDate
                     date="MM"
                     value={mm}
                     setValue={setMM}
+                    err={mmErr}
+                    errMsg="Enter valid month"
+                    setErr={setMMErr}
                 />
                 <InputDate
                     date="YY"
                     value={yy}
                     setValue={setYY}
+                    err={yyErr}
+                    errMsg="Enter valid year"
+                    setErr={setYYErr}
                 />
             </div>
             <BucketInput
                 value={paymentAmount}
-                error={error}
+                error={moneyErr}
                 handleChange={setPaymentAmount}
-                setError={setError}
+                setError={setMoneyErr}
                 placeholder="75.00 $"
                 style={inputStyle}
                 errorMessage="Please enter numeric value"
@@ -75,7 +90,7 @@ const AddPayment = ({ handleAddPayment, buckets }) => {
             <Numpad
                 goal={paymentAmount}
                 setGoal={setPaymentAmount}
-                setError={setError}
+                setError={setMoneyErr}
             />
             <div className="flex items-center justify-center
                  w-[85%] sm:w-[60%] md:w-[45%] lg:w-[30%]
@@ -89,6 +104,10 @@ const AddPayment = ({ handleAddPayment, buckets }) => {
                     `}
                     onClick={() => {
                         handleAddPayment(dd, mm, yy, paymentAmount);
+                        ddErr !== false && 
+                        mmErr !== false && 
+                        yyErr !== false && 
+                        moneyErr !== false && 
                         navigate(`/buckets/${formatName(bucketName)}`);
                     }}
                 />
