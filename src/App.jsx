@@ -48,7 +48,7 @@ const App = () => {
         payments: {} // Empty payments object initially
       };
 
-      setBuckets([...buckets, newBucket]);
+      setBuckets([newBucket, ...buckets]);
     } else {
       console.error("Name and goal must be provided.");
     }
