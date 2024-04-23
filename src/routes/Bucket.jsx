@@ -6,7 +6,7 @@ import Payments from "../components/Payments";
 import Tabs from "../components/Tabs";
 import Logo from "../components/Logo";
 
-import { ArrowCircleDownLeft, CaretCircleLeft } from "@phosphor-icons/react";
+import { ArrowCircleDownLeft, CaretCircleLeft, CaretLeft } from "@phosphor-icons/react";
 
 const Bucket = ({ buckets }) => {
 
@@ -52,10 +52,10 @@ const Bucket = ({ buckets }) => {
                     sm:left-12 lg:left-16
                 "
             >
-                <CaretCircleLeft 
+                <CaretLeft 
                     weight="thin"
                     size="100%"
-                    className="text-white w-10 h-10 lg:w-12 lg:h-12"
+                    className="text-white w-8 h-8 lg:w-10 lg:h-10"
                 />
             </Link>
             <div className="w-full flex flex-col items-center justify-center mb-10">

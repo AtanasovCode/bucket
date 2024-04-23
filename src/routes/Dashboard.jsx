@@ -17,7 +17,7 @@ const Dashboard = ({buckets}) => {
             flex flex-col items-center justify-start
         ">
             <Logo />
-            <div className="w-full flex items-center justify-center text-light text-md mb-16 md:text-lg lg:text-lg">
+            <div className="w-full flex items-center justify-center text-light text-md mb-22 md:text-lg lg:text-lg">
                 Buckets
             </div>
             <div className={`
@@ -44,7 +44,7 @@ const Dashboard = ({buckets}) => {
                 }
             </div>
             <div className="
-                w-full bg-background flex items-center justify-center p-4 fixed bottom-0 left-0
+                w-full bg-background flex items-center justify-center pt-2 pb-12 fixed bottom-0 left-0
             ">
                 <Link
                     to="/add-new-bucket"

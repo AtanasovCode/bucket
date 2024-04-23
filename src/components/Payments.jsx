@@ -55,7 +55,7 @@ const Payments = ({
                 }
                 <Link
                     to={`/buckets/${formatName(bucket.name)}/new-payment`}
-                    className="w-full flex items-center justify-center bg-background p-2 fixed bottom-0 left-0"
+                    className="w-full flex items-center justify-center bg-background pt-2 pb-12 fixed bottom-0 left-0"
                 >
                     <img
                         src={addIcon}
