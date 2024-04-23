@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Overview from "../components/Overview";
@@ -5,6 +6,7 @@ import Payments from "../components/Payments";
 import Tabs from "../components/Tabs";
 import Logo from "../components/Logo";
 
+import { ArrowCircleDownLeft, CaretCircleLeft } from "@phosphor-icons/react";
 
 const Bucket = ({ buckets }) => {
 
@@ -44,6 +46,18 @@ const Bucket = ({ buckets }) => {
     return (
         <div className="flex flex-col items-center justify-center text-white font-sans py-8">
             <Logo />
+            <Link 
+                to="/"
+                className="flex items-center justify-center absolute top-8 left-8 cursor-pointer
+                    sm:left-12 lg:left-16
+                "
+            >
+                <CaretCircleLeft 
+                    weight="thin"
+                    size="100%"
+                    className="text-white w-10 h-10 lg:w-12 lg:h-12"
+                />
+            </Link>
             <div className="w-full flex flex-col items-center justify-center mb-10">
                 <div className="text-sm text-light mb-2">
                     Bucket Name
