@@ -35,7 +35,7 @@ const Bucket = ({ buckets }) => {
 
     const getRemaining = (goal, saved) => {
         let result = parseFloat(goal) - parseFloat(saved);
-        return result;
+        return result >= 0 ? result : 0;
     }
 
     const getProgress = (saved, goal) => {
