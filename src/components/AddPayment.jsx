@@ -21,7 +21,8 @@ const AddPayment = ({
     const [mm, setMM] = useState("");
     const [yy, setYY] = useState("");
     const [paymentAmount, setPaymentAmount] = useState("");
-    const [error, setError] = useState(false);
+
+    const [errorsFound, setErrorsFound] = useState(true);
 
     const inputStyle = "text-center font-mono";
 
@@ -40,6 +41,15 @@ const AddPayment = ({
             }
         })
     }, [])
+
+    useEffect(() => {
+        !ddErr && 
+        !mmErr && 
+        !yyErr && 
+        !moneyErr &&
+        dd && mm && yy && paymentAmount &&
+        setErrorsFound(false);
+    }, [dd, mm, yy, paymentAmount])
 
     return (
         <div className="w-full min-h-[100vh] flex flex-col items-center justify-start font-sans text-white py-8">
@@ -104,11 +114,7 @@ const AddPayment = ({
                     `}
                     onClick={() => {
                         handleAddPayment(dd, mm, yy, paymentAmount);
-                        ddErr !== false && 
-                        mmErr !== false && 
-                        yyErr !== false && 
-                        moneyErr !== false && 
-                        navigate(`/buckets/${formatName(bucketName)}`);
+                        !errorsFound && navigate(`/buckets/${formatName(bucketName)}`);
                     }}
                 />
             </div>

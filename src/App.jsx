@@ -55,37 +55,42 @@ const App = () => {
   };
 
   const handleAddPayment = (dd, mm, yy, paymentAmount) => {
+
     setMoneyErr(paymentAmount && !isNaN(paymentAmount) ? false : true);
     setDDErr(dd && dd <= 31 && !isNaN(dd) ? false : true);
     setMMErr(mm && mm <= 12 && !isNaN(mm) ? false : true);
     setYYErr(yy && !isNaN(yy) ? false : true);
 
-    // Use useEffect to perform the updates after the state has been updated
-    useEffect(() => {
-      if (!ddErr && !mmErr && !yyErr && !moneyErr) {
-        let date = `${dd}/${mm}/${yy}`;
+    const allIsGood = dd && dd <= 31 && !isNaN(dd) &&
+    mm && mm <= 12 && !isNaN(mm) &&
+    yy && !isNaN(yy) ? true : false;
 
-        let paymentDetails = {
-          date: date,
-          amount: paymentAmount,
-          id: uuidv4(),
-        };
+    if (allIsGood) {
+      console.log("No errors found");
+      let date = `${dd}/${mm}/${yy}`;
 
-        const updatedBuckets = [...buckets];
+      let paymentDetails = {
+        date: date,
+        amount: paymentAmount,
+        id: uuidv4(),
+      };
 
-        updatedBuckets.forEach((bucket) => {
-          if (bucket.id === localStorage.getItem("id")) {
-            if (!Array.isArray(bucket.payments)) {
-              bucket.payments = [];
-            }
-            bucket.payments.push(paymentDetails);
-            bucket.saved = (parseFloat(bucket.saved) + parseFloat(paymentAmount)).toFixed(2);
+      const updatedBuckets = [...buckets];
+
+      updatedBuckets.forEach((bucket) => {
+        if (bucket.id === localStorage.getItem("id")) {
+          if (!Array.isArray(bucket.payments)) {
+            bucket.payments = [];
           }
-        });
+          bucket.payments.push(paymentDetails);
+          bucket.saved = (parseFloat(bucket.saved) + parseFloat(paymentAmount)).toFixed(2);
+        }
+      });
 
-        setBuckets(updatedBuckets);
-      }
-    }, [ddErr, mmErr, yyErr, moneyErr]);
+      setBuckets(updatedBuckets);
+    } else {
+      console.error("Error, inputs are not correct");
+    }
   };
 
 
