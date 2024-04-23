@@ -63,7 +63,7 @@ const App = () => {
 
     const allIsGood = dd && dd <= 31 && !isNaN(dd) &&
     mm && mm <= 12 && !isNaN(mm) &&
-    yy && !isNaN(yy) ? true : false;
+    yy && !isNaN(yy) && paymentAmount && !isNaN(paymentAmount) ? true : false;
 
     if (allIsGood) {
       console.log("No errors found");

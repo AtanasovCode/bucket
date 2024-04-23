@@ -43,11 +43,7 @@ const AddPayment = ({
     }, [])
 
     useEffect(() => {
-        !ddErr && 
-        !mmErr && 
-        !yyErr && 
-        !moneyErr &&
-        dd && mm && yy && paymentAmount &&
+        dd && !isNaN(dd) && mm && !isNaN(mm) && yy && !isNaN(yy) && paymentAmount && !isNaN(paymentAmount) &&
         setErrorsFound(false);
     }, [dd, mm, yy, paymentAmount])
 
