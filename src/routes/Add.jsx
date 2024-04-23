@@ -69,6 +69,8 @@ const Add = ({
                 name={name}
                 goal={goal}
                 buckets={buckets}
+                setError={setError}
+                setErrorGoal={setErrorGoal}
             />
         </div>
     );

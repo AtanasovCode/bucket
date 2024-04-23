@@ -39,7 +39,7 @@ const App = () => {
 
   const addBucket = (name, goal) => {
     // Check if both name and goal are provided and not empty
-    if (name && goal) {
+    if (name && goal && !isNaN(goal)) {
       const newBucket = {
         id: uuidv4(),
         name: name,

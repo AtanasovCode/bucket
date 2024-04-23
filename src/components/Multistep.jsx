@@ -10,7 +10,8 @@ const Multistep = ({
     name,
     goal,
     addBucket,
-    buckets,
+    setError,
+    setErrorGoal,
 }) => {
 
     const navigate = useNavigate();
@@ -34,7 +35,16 @@ const Multistep = ({
                         transition-colors duration-700
                         ${currentStep === 1 ? nextStyle : saveStyle}
                     `}
-                    onClick={() => currentStep === 1 ? nextStep() : (addBucket(name, goal), navigate("/"))}
+                    onClick={() =>
+                        currentStep === 1 ?
+                            nextStep()
+                            : (
+                                name && goal && !isNaN(goal) ?
+                                    (addBucket(name, goal), navigate("/")) :
+                                    (setErrorGoal(true), console.error("Input field is empty!"))
+                            )
+                    }
+
                 />
             </div>
             <div className="w-full flex items-center justify-center">
