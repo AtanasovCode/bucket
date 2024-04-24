@@ -17,11 +17,11 @@ const Payments = ({
 
     return (
         <div className="w-full flex flex-col items-center justify-start font-sans">
-            <div className="text-light text-sm mb-8 flex items-center justify-center">
+            <div className="text-light text-sm mb-8 flex items-center justify-center my-12">
                 <ClockCounterClockwise
                     weight="light"
                     size="100%"
-                    className="text-light w-8 h-8"
+                    className="text-light w-10 h-10"
                 />
                 <div className="ml-4">History</div>
             </div>
@@ -60,7 +60,7 @@ const Payments = ({
                     <img
                         src={addIcon}
                         alt="add icon used for adding a new payment"
-                        className="w-12 h-12 mt-6"
+                        className="w-12 h-12"
                     />
                 </Link>
             </div>

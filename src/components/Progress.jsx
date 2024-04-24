@@ -1,10 +1,12 @@
 const Progress = ({
     saved,
     goal,
+    formatMoney,
 }) => {
 
     const getProgress = () => {
         return (saved / goal) * 100;
+
     }
 
     const progressWidth = getProgress(saved, goal) + '%';

@@ -10,7 +10,7 @@ const Overview = ({
 }) => {
     return (
         <div className="w-full flex flex-col items-center justify-center">
-            <div className="flex flex-col items-center justify-center mb-6">
+            <div className="flex flex-col items-center justify-center my-14">
                 <div className="flex items-center justify-center">
                     <PiggyBank
                         size="100%"
@@ -21,7 +21,7 @@ const Overview = ({
                 </div>
             </div>
 
-            <div className="flex flex-col items-end justify-center mb-6">
+            <div className="flex flex-col items-end justify-center mb-12">
                 <div className="text-accent font-mono text-4xl mb-1">
                     {formatMoney(bucket.saved)} $
                 </div>
@@ -45,6 +45,7 @@ const Overview = ({
                     <Progress
                         goal={bucket.goal}
                         saved={bucket.saved}
+                        formatMoney={formatMoney}
                     />
                 </div>
             </div>

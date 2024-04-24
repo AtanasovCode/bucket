@@ -66,7 +66,7 @@ const Bucket = ({ buckets }) => {
                     {bucket.name}
                 </div>
             </div>
-            <div className="flex items-center justify-center mb-10">
+            <div className="flex items-center justify-center">
                 <Tabs
                     name="Overview"
                     selectedTab={selectedTab}

@@ -6,7 +6,7 @@ const Logo = () => {
             <img
                 src={logo}
                 alt="logo"
-                className="w-8 mb-16 md:w-10 lg:w-12"
+                className="w-10 mb-12 lg:w-12"
             />
         </div>
     );
