@@ -35,7 +35,7 @@ const Add = ({
     }
 
     return (
-        <div className="w-full min-h-[100vh] relative flex flex-col items-center justify-between py-12">
+        <div className="w-full min-h-[95vh] relative flex flex-col items-center justify-between py-12">
             <div className="w-full flex flex-col items-center justify-center">
                 <img
                     src={logo}

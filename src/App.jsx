@@ -8,6 +8,7 @@ import Dashboard from "./routes/Dashboard";
 import Add from "./routes/Add"; //add a new bucket
 import Bucket from "./routes/Bucket";
 import AddPayment from "./components/AddPayment";
+import Edit from "./routes/Edit";
 
 const App = () => {
 
@@ -124,6 +125,10 @@ const App = () => {
         yyErr={yyErr}
         setYYErr={setYYErr}
       />
+    },
+    {
+      path: "/buckets/:bucket-name/edit",
+      element: <Edit />
     },
   ])
 

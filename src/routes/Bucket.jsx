@@ -6,7 +6,7 @@ import Payments from "../components/Payments";
 import Tabs from "../components/Tabs";
 import Logo from "../components/Logo";
 
-import { ArrowCircleDownLeft, CaretCircleLeft, CaretLeft } from "@phosphor-icons/react";
+import { CaretLeft, Gear, GearSix } from "@phosphor-icons/react";
 
 const Bucket = ({ buckets }) => {
 
@@ -46,16 +46,27 @@ const Bucket = ({ buckets }) => {
     return (
         <div className="flex flex-col items-center justify-center text-white font-sans py-8">
             <Logo />
-            <Link 
+            <Link
                 to="/"
                 className="flex items-center justify-center absolute top-8 left-8 cursor-pointer
                     sm:left-12 lg:left-16
                 "
             >
-                <CaretLeft 
+                <CaretLeft
                     weight="thin"
                     size="100%"
                     className="text-white w-8 h-8 lg:w-10 lg:h-10"
+                />
+            </Link>
+            <Link
+                to="/"
+                className="flex items-center justify-center absolute top-8 right-8 cursor-pointer
+                sm:right-12 lg:right-16"
+            >
+                <Gear
+                    weight="fill"
+                    size="100%"
+                    className="text-light w-8 h-8 lg:w-10 lg:h-10"
                 />
             </Link>
             <div className="w-full flex flex-col items-center justify-center mb-10">
@@ -91,7 +102,7 @@ const Bucket = ({ buckets }) => {
                         bucket={bucket}
                     />
             }
-        </div>
+        </div >
     );
 }
 
