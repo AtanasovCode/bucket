@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Vault, ClockCounterClockwise } from "@phosphor-icons/react";
 
+import PaymentItem from "./PaymentItem";
+
 import addIcon from '../assets/add-icon.svg';
 
 const Payments = ({
@@ -29,25 +31,12 @@ const Payments = ({
                 {
                     bucket.payments.length > 0 ? bucket.payments.map((payment) => {
                         return (
-                            <div
+                            <PaymentItem 
                                 key={payment.id}
-                                className="flex items-center justify-between mb-4
-                            w-[85%] sm:w-[60%] md:w-[50%] lg:w-[35%]
-                        ">
-                                <div className="flex items-center justify-center">
-                                    <Vault
-                                        weight="light"
-                                        size="100%"
-                                        className="w-8 h-8 text-accent inline-block"
-                                    />
-                                    <div className="text-light ml-6">
-                                        {payment.date}
-                                    </div>
-                                </div>
-                                <div className="font-mono text-lg text-accent text-right">
-                                    {formatMoney(parseFloat(payment.amount))} $
-                                </div>
-                            </div>
+                                date={payment.date}
+                                amount={payment.amount}
+                                formatMoney={formatMoney}
+                            />
                         );
                     }) : <div className="text-light text-center">
                         No Payment History
