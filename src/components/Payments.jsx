@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { Vault, ClockCounterClockwise } from "@phosphor-icons/react";
-
 import PaymentItem from "./PaymentItem";
-
 import addIcon from '../assets/add-icon.svg';
 
 const Payments = ({
@@ -17,6 +15,22 @@ const Payments = ({
         return money.toLocaleString('en-US', { minimumFractionDigits: 2 });
     };
 
+    // Function to parse the date string into a sortable format
+    const parseDate = (dateString) => {
+        const parts = dateString.split('/');
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10);
+        const year = parseInt(parts[2], 10) + 2000; // Assuming the year is in 21st century
+        return new Date(year, month - 1, day); // Month is 0-indexed in JavaScript Date constructor
+    }
+
+    // Sort payments by date in descending order
+    const sortedPayments = bucket.payments.slice().sort((a, b) => {
+        const dateA = parseDate(a.date);
+        const dateB = parseDate(b.date);
+        return dateB - dateA; // Compare dates
+    });
+
     return (
         <div className="w-full flex flex-col items-center justify-start font-sans">
             <div className="text-light text-sm mb-8 flex items-center justify-center my-12">
@@ -29,9 +43,9 @@ const Payments = ({
             </div>
             <div className="flex flex-col items-center justify-between w-full mb-12">
                 {
-                    bucket.payments.length > 0 ? bucket.payments.map((payment) => {
+                    sortedPayments.length > 0 ? sortedPayments.map((payment) => {
                         return (
-                            <PaymentItem 
+                            <PaymentItem
                                 key={payment.id}
                                 date={payment.date}
                                 amount={payment.amount}
